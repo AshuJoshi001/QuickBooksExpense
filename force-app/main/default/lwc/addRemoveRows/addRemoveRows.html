@@ -1,0 +1,57 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card>
+       <lightning-spinner if:true={isSpinner} variant="brand" size="large"> </lightning-spinner>
+       <lightning-layout>
+          <lightning-layout-item size="12">
+             <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-border_left slds-border_right"
+                aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                   <tr>
+                      <th>{row1}</th>
+                      <th>{row2}</th>
+                      <th>{row3}</th>
+                      <th>{row4}</th>
+                      <th></th>
+                   </tr>
+                </thead>
+                <tbody>
+                  <template for:each={rows} for:item="row">
+                      <tr key={row.id}>
+                         <td>
+                           <lightning-combobox name="custom0" data-index={row.id} variant="label-hidden"
+                           placeholder="" onchange={handleChange} value={expenseCategoryOptions}
+                           options={expenseCategoryOptions}>
+                        </lightning-combobox>
+                         </td>
+                         <td>
+                           <lightning-input type="text" name="custom1" data-index={row.id}
+                           variant="label-hidden" placeholder="" onchange={handleChange}
+                           >
+                           </lightning-input>
+                         </td>
+                         <td>
+                            <lightning-input type="text" name="custom2" data-index={row.id}
+                               variant="label-hidden" placeholder="" onchange={handleChange}
+                               >
+                            </lightning-input>
+                         </td>
+                         <td>
+                            <lightning-input type="text" name="custom3" data-index={row.id}
+                                variant="label-hidden" onchange={handleChange}>
+                            </lightning-input>
+                         </td>
+                         <td>
+                            <lightning-button-icon data-index={row.id} class="slds-float--right"
+                               icon-name="action:new" onclick={handleAddRow}></lightning-button-icon>
+                            <lightning-button-icon data-index={row.id} class="slds-float--right"
+                               icon-name="action:delete" onclick={handleRemoveRow}></lightning-button-icon>
+                         </td>
+                      </tr>
+                     </template>
+                </tbody>
+             </table>
+          </lightning-layout-item>
+       </lightning-layout>
+    </lightning-card>
+ </template>
