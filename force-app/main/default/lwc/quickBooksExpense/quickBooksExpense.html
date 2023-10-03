@@ -1,0 +1,53 @@
+<template>
+
+    <lightning-card title="Expense">
+
+        <div style="display: inline-flex;">
+
+            <lightning-combobox class="slds-p-around_medium"
+                label="Payee"
+                options={vendornamesoptions}
+                onchange={handleVendorChange}>
+                
+            </lightning-combobox>
+
+            <lightning-combobox class="slds-p-around_medium"
+                label="Select an Account"
+                options={accountTypeOptions}
+                onchange={handleAccountChange}>
+            </lightning-combobox>
+
+            <p style="margin-top: 35px; margin-right:10px" class="slds-p-around_medium"><b>Balance:</b>
+                {selectedAccountBalance}</p>
+
+        </div>
+
+        <br>
+        <br>
+
+        <div>
+            <strong class="slds-p-around_medium">Category Details</strong>
+            <c-add-remove-rows row1={category} row2={categoryDescription}
+                row3={categoryAmount} row4={categoryBillable}
+                expense-category-options={expenseCategoryOptions}
+                onchangedata={handleChildDataChange}></c-add-remove-rows>
+        </div>
+
+        <br>
+
+        <div>
+            <strong class="slds-p-around_medium">Item Details</strong>
+            <c-add-remove-rows row1={itemProduct} row2={itemDescription}
+                row3={itemQuantity} row4={itemRate}></c-add-remove-rows>
+        </div>
+
+        <div>
+            <label for="myfile">Select a file:</label>
+            <input type="file" id="myfile" name="myfile">
+        </div>
+
+        <lightning-button variant="brand" label="Save" title="Save"
+            onclick={handleCreateExpense} class="slds-m-left_x-small"></lightning-button>
+
+    </lightning-card>
+</template>
